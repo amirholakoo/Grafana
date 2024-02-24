@@ -39,4 +39,4 @@ sudo service mysql restart
 
 ### Access Grafana
 
-Open a web browser and go to http://<your-raspberry-pi-ip>:3000/. The default login is admin for both the user and password.
+Open a web browser and go to http://your-raspberry-pi-ip:3000/. The default login is admin for both the user and password.
