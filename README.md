@@ -27,6 +27,10 @@ bind-address            = 0.0.0.0
 
 sudo mysql -u root -p
 
+CREATE USER 'grafanaReader' IDENTIFIED BY 'pi';
+
+GRANT SELECT ON *.* TO 'grafanaReader';
+
 SELECT user, host FROM mysql.user WHERE user = 'grafanareader';
 
 GRANT ALL PRIVILEGES ON *.* TO 'grafanareader'@'192.168.1.101' IDENTIFIED BY 'pi';
