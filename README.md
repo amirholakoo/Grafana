@@ -2,48 +2,48 @@
  
 ### Installation
 
-sudo apt-get install -y software-properties-common
+`sudo apt-get install -y software-properties-common`
 
-sudo add-apt-repository "deb https://packages.grafana.com/oss/deb stable main"
+`sudo add-apt-repository "deb https://packages.grafana.com/oss/deb stable main"`
 
-wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
+`wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -`
 
-sudo apt-get update
+`sudo apt-get update`
 
-sudo apt-get install grafana
+`sudo apt-get install grafana`
 
-sudo systemctl enable grafana-server
+`sudo systemctl enable grafana-server`
 
-sudo systemctl start grafana-server
+`sudo systemctl start grafana-server`
 
 ### Config MySQL
 
-sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf
+`sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf`
 
 bind-address            = 0.0.0.0
 
 
 ### Access/Permission
 
-sudo mysql -u root -p
+`sudo mysql -u root -p`
 
-CREATE USER 'grafana'@'%' IDENTIFIED BY 'pi';
+`CREATE USER 'grafana'@'%' IDENTIFIED BY 'pi';`
 
-GRANT SELECT ON *.* TO 'grafana';
+`GRANT SELECT ON *.* TO 'grafana';`
 
-grant usage on *.* to 'grafana'@'%' IDENTIFIED BY 'pi';
+`grant usage on *.* to 'grafana'@'%' IDENTIFIED BY 'pi';`
 
-GRANT ALL PRIVILEGES ON *.* TO 'grafana'@'%';
+`GRANT ALL PRIVILEGES ON *.* TO 'grafana'@'%';`
 
-SELECT user, host FROM mysql.user WHERE user = 'grafana';
+`SELECT user, host FROM mysql.user WHERE user = 'grafana';`
 
-GRANT ALL PRIVILEGES ON *.* TO 'grafana'@'192.168.1.101' IDENTIFIED BY 'pi';
+`GRANT ALL PRIVILEGES ON *.* TO 'grafana'@'192.168.1.101' IDENTIFIED BY 'pi';`
 
-FLUSH PRIVILEGES;
+`FLUSH PRIVILEGES;`
 
-exit;
+`exit;`
 
-sudo service mysql restart
+`sudo service mysql restart`
 
 ### Access Grafana
 
