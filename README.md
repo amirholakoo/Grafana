@@ -35,7 +35,7 @@ grant usage on *.* to 'grafana'@'%' IDENTIFIED BY 'pi';
 
 GRANT ALL PRIVILEGES ON *.* TO 'grafana'@'%';
 
-SELECT user, host FROM mysql.user WHERE user = 'grafanareader';
+SELECT user, host FROM mysql.user WHERE user = 'grafana';
 
 GRANT ALL PRIVILEGES ON *.* TO 'grafana'@'192.168.1.101' IDENTIFIED BY 'pi';
 
