@@ -12,9 +12,9 @@ sudo apt-get update
 
 sudo apt-get install grafana
 
-sudo systemctl start grafana-server
-
 sudo systemctl enable grafana-server
+
+sudo systemctl start grafana-server
 
 ### Config MySQL
 
@@ -27,13 +27,17 @@ bind-address            = 0.0.0.0
 
 sudo mysql -u root -p
 
-CREATE USER 'grafanaReader' IDENTIFIED BY 'pi';
+CREATE USER 'grafana'@'%' IDENTIFIED BY 'pi';
 
-GRANT SELECT ON *.* TO 'grafanaReader';
+GRANT SELECT ON *.* TO 'grafana';
+
+grant usage on *.* to 'grafana'@'%' IDENTIFIED BY 'pi';
+
+GRANT ALL PRIVILEGES ON *.* TO 'grafana'@'%';
 
 SELECT user, host FROM mysql.user WHERE user = 'grafanareader';
 
-GRANT ALL PRIVILEGES ON *.* TO 'grafanareader'@'192.168.1.101' IDENTIFIED BY 'pi';
+GRANT ALL PRIVILEGES ON *.* TO 'grafana'@'192.168.1.101' IDENTIFIED BY 'pi';
 
 FLUSH PRIVILEGES;
 
